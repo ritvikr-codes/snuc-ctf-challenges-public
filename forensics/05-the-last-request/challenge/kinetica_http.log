@@ -1,0 +1,55 @@
+KINETICA CONTROL NETWORK
+HTTP FORENSIC CAPTURE
+======================
+
+[REQUEST]
+Timestamp: 2026-09-15T14:27:31
+Source: 10.13.7.22
+Destination: 10.13.7.77
+GET /status HTTP/1.1
+Host: control.local
+User-Agent: KineticaMonitor/2.4
+Connection: keep-alive
+
+[RESPONSE]
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 48
+
+{"unit":"AX-07","status":"ONLINE","link":"STABLE"}
+
+
+[REQUEST]
+Timestamp: 2026-09-15T14:28:02
+Source: 10.13.7.22
+Destination: 10.13.7.77
+GET /telemetry HTTP/1.1
+Host: control.local
+User-Agent: KineticaMonitor/2.4
+Connection: keep-alive
+
+[RESPONSE]
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 72
+
+{"unit":"AX-07","temperature":"41.2","signal":"NORMAL","sector":"07"}
+
+
+[REQUEST]
+Timestamp: 2026-09-15T14:32:07
+Source: 10.13.7.17
+Destination: 10.13.7.77
+GET /sync?mode=delta&trace=736e75637b7468655f6c6173745f726571756573745f7761735f6e6f745f72616e646f6d7d HTTP/1.1
+Host: control.local
+User-Agent: AX07-Recon/1.7
+X-Trace-ID: DD-07
+Connection: close
+
+[RESPONSE]
+HTTP/1.1 200 OK
+Content-Type: text/plain
+X-KINETICA-STATUS: RECOVERED
+Content-Length: 24
+
+TRACE-STATUS=RECOVERED
